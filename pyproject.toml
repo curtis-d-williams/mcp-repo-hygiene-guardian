@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mcp-guardian-template"
+version = "0.1.0"
+description = "Deterministic, network-free, read-only MCP guardian template (Tier 1 baseline)."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { file = "LICENSE" }
+authors = [{ name = "Curtis D. Williams" }]
+dependencies = ["fastmcp>=2.0.0"]
+
+[project.scripts]
+mcp-guardian-template = "mcp_guardian_template.server:main"
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
