@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: MIT
 from mcp_repo_hygiene_guardian.server import canonical_json, check_repo_hygiene
 
 
