@@ -1,12 +1,19 @@
-from mcp_guardian_template.server import evaluate_repo, canonical_json
+from mcp_repo_hygiene_guardian.server import canonical_json, check_repo_hygiene
 
 
-def test_evaluate_repo_is_deterministic() -> None:
-    out1 = evaluate_repo(".")
-    out2 = evaluate_repo(".")
+def test_check_repo_hygiene_is_deterministic() -> None:
+    out1 = check_repo_hygiene(".")
+    out2 = check_repo_hygiene(".")
     assert canonical_json(out1) == canonical_json(out2)
 
 
 def test_output_schema_is_stable() -> None:
-    out = evaluate_repo(".")
+    out = check_repo_hygiene(".")
     assert set(out.keys()) == {"tool", "repo_path", "ok", "fail_closed", "details", "output"}
+
+    if out["output"] is not None:
+        assert set(out["output"].keys()) == {
+            "missing_required_files",
+            "tracked_build_artifacts",
+            "notes",
+        }

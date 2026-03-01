@@ -3,8 +3,8 @@
 The following output is part of the V1 contract and must remain byte-identical
 when serialized deterministically (sorted keys, compact separators).
 
-## Example: evaluate_repo(".")
+## Example: check_repo_hygiene(".")
 
 Canonical JSON:
 
-{"details":"ok","fail_closed":false,"ok":true,"output":{"note":"template_guardian_noop"},"repo_path":".","tool":"evaluate_repo"}
+{"details":"ok","fail_closed":false,"ok":true,"output":{"missing_required_files":[],"notes":[],"tracked_build_artifacts":[]},"repo_path":".","tool":"check_repo_hygiene"}
